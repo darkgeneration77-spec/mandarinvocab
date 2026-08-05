@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>儿童趣味识字 Level 3</title>
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#fff8ef,#eef9ff);color:#263241}
+header{text-align:center;padding:34px 16px 20px}
+h1{margin:0;font-size:clamp(30px,6vw,52px)}
+header p{color:#657080}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:12px;background:#ffffffee;border-block:1px solid #e1e5ea}
+nav button{border:0;border-radius:12px;padding:11px 16px;font-weight:800;cursor:pointer}
+nav button:first-child{background:#ff765f;color:white}
+.note{width:min(900px,94%);margin:16px auto;padding:12px;text-align:center;background:#fff2b8;border:1px solid #ead170;border-radius:14px;font-weight:700}
+.categories{width:min(1000px,94%);margin:0 auto 16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.categories span{background:#fff;border:1px solid #e1e5ea;border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
+main{width:min(1180px,94%);margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;padding-bottom:40px}
+.card{position:relative;background:#fff;border:1px solid #e3e6ea;border-radius:22px;padding:18px;box-shadow:0 9px 25px #33445518}
+.card.active{outline:4px solid #ffcabf}
+.num{position:absolute;right:14px;top:12px;color:#9299a3;font-size:12px}
+.row{display:flex;gap:18px;align-items:center}
+.han{width:88px;height:88px;display:grid;place-items:center;font-size:62px;font-weight:900;background:#fff5ef;border:2px dashed #efa996;border-radius:18px}
+.py{font-size:29px;font-weight:900;color:#4385ec}
+.word{font-size:19px;font-weight:800;margin-top:4px}
+.count{color:#69727e;margin-top:8px}
+.gridbox{width:200px;height:200px;margin:16px auto;border:2px solid #d7dde4;background:
+linear-gradient(45deg,transparent 49.5%,#e5e9ef 49.5%,#e5e9ef 50.5%,transparent 50.5%),
+linear-gradient(-45deg,transparent 49.5%,#e5e9ef 49.5%,#e5e9ef 50.5%,transparent 50.5%),
+linear-gradient(90deg,transparent 49.5%,#e5e9ef 49.5%,#e5e9ef 50.5%,transparent 50.5%),
+linear-gradient(0deg,transparent 49.5%,#e5e9ef 49.5%,#e5e9ef 50.5%,transparent 50.5%)}
+.btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.btns button{border:0;border-radius:10px;padding:10px 4px;font-weight:800;cursor:pointer}
+.btns button:nth-child(1){background:#ffe69a}
+.btns button:nth-child(2){background:#cfe3ff}
+.btns button:nth-child(3){background:#d7f3de}
+footer{text-align:center;color:#7a828c;padding:10px 12px 28px}
+</style>
+</head>
+<body>
+<header>
+  <h1>儿童趣味识字 · Level 3</h1>
+  <p>第一阶段｜学习用品 · 衣物 · 食物 · 颜色 · 时间 · 形容词</p>
+</header>
+
+<nav>
+  <button onclick="playAll()">▶ 顺序学习30字</button>
+  <button onclick="speak('书')">🔊 测试读音</button>
+  <button onclick="stopAll()">■ 停止</button>
+</nav>
+
+<div class="note">首次使用请先按“测试读音”。笔顺动画需要联网加载。</div>
+
+<div class="categories">
+  <span>学习用品：7字</span>
+  <span>衣物用品：3字</span>
+  <span>食物饮品：5字</span>
+  <span>颜色：5字</span>
+  <span>时间与方位：6字</span>
+  <span>数量与形容：4字</span>
+</div>
+
+<main><article class="card">
+<span class="num">1</span>
+<div class="row">
+  <div class="han">书</div>
+  <div>
+    <div class="py">shū</div>
+    <div class="word">看书</div>
+    <div class="count">总笔画：4画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w0"></div></div>
+<div class="btns">
+  <button onclick="speak('书')">🔊 读音</button>
+  <button onclick="anim(0)">▶ 笔顺</button>
+  <button onclick="quiz(0)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">2</span>
+<div class="row">
+  <div class="han">本</div>
+  <div>
+    <div class="py">běn</div>
+    <div class="word">书本</div>
+    <div class="count">总笔画：5画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w1"></div></div>
+<div class="btns">
+  <button onclick="speak('本')">🔊 读音</button>
+  <button onclick="anim(1)">▶ 笔顺</button>
+  <button onclick="quiz(1)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">3</span>
+<div class="row">
+  <div class="han">笔</div>
+  <div>
+    <div class="py">bǐ</div>
+    <div class="word">铅笔</div>
+    <div class="count">总笔画：10画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w2"></div></div>
+<div class="btns">
+  <button onclick="speak('笔')">🔊 读音</button>
+  <button onclick="anim(2)">▶ 笔顺</button>
+  <button onclick="quiz(2)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">4</span>
+<div class="row">
+  <div class="han">纸</div>
+  <div>
+    <div class="py">zhǐ</div>
+    <div class="word">白纸</div>
+    <div class="count">总笔画：7画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w3"></div></div>
+<div class="btns">
+  <button onclick="speak('纸')">🔊 读音</button>
+  <button onclick="anim(3)">▶ 笔顺</button>
+  <button onclick="quiz(3)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">5</span>
+<div class="row">
+  <div class="han">包</div>
+  <div>
+    <div class="py">bāo</div>
+    <div class="word">书包</div>
+    <div class="count">总笔画：5画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w4"></div></div>
+<div class="btns">
+  <button onclick="speak('包')">🔊 读音</button>
+  <button onclick="anim(4)">▶ 笔顺</button>
+  <button onclick="quiz(4)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">6</span>
+<div class="row">
+  <div class="han">桌</div>
+  <div>
+    <div class="py">zhuō</div>
+    <div class="word">桌子</div>
+    <div class="count">总笔画：10画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w5"></div></div>
+<div class="btns">
+  <button onclick="speak('桌')">🔊 读音</button>
+  <button onclick="anim(5)">▶ 笔顺</button>
+  <button onclick="quiz(5)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">7</span>
+<div class="row">
+  <div class="han">椅</div>
+  <div>
+    <div class="py">yǐ</div>
+    <div class="word">椅子</div>
+    <div class="count">总笔画：12画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w6"></div></div>
+<div class="btns">
+  <button onclick="speak('椅')">🔊 读音</button>
+  <button onclick="anim(6)">▶ 笔顺</button>
+  <button onclick="quiz(6)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">8</span>
+<div class="row">
+  <div class="han">衣</div>
+  <div>
+    <div class="py">yī</div>
+    <div class="word">衣服</div>
+    <div class="count">总笔画：6画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w7"></div></div>
+<div class="btns">
+  <button onclick="speak('衣')">🔊 读音</button>
+  <button onclick="anim(7)">▶ 笔顺</button>
+  <button onclick="quiz(7)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">9</span>
+<div class="row">
+  <div class="han">鞋</div>
+  <div>
+    <div class="py">xié</div>
+    <div class="word">鞋子</div>
+    <div class="count">总笔画：15画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w8"></div></div>
+<div class="btns">
+  <button onclick="speak('鞋')">🔊 读音</button>
+  <button onclick="anim(8)">▶ 笔顺</button>
+  <button onclick="quiz(8)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">10</span>
+<div class="row">
+  <div class="han">帽</div>
+  <div>
+    <div class="py">mào</div>
+    <div class="word">帽子</div>
+    <div class="count">总笔画：12画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w9"></div></div>
+<div class="btns">
+  <button onclick="speak('帽')">🔊 读音</button>
+  <button onclick="anim(9)">▶ 笔顺</button>
+  <button onclick="quiz(9)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">11</span>
+<div class="row">
+  <div class="han">米</div>
+  <div>
+    <div class="py">mǐ</div>
+    <div class="word">白米</div>
+    <div class="count">总笔画：6画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w10"></div></div>
+<div class="btns">
+  <button onclick="speak('米')">🔊 读音</button>
+  <button onclick="anim(10)">▶ 笔顺</button>
+  <button onclick="quiz(10)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">12</span>
+<div class="row">
+  <div class="han">饭</div>
+  <div>
+    <div class="py">fàn</div>
+    <div class="word">吃饭</div>
+    <div class="count">总笔画：7画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w11"></div></div>
+<div class="btns">
+  <button onclick="speak('饭')">🔊 读音</button>
+  <button onclick="anim(11)">▶ 笔顺</button>
+  <button onclick="quiz(11)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">13</span>
+<div class="row">
+  <div class="han">菜</div>
+  <div>
+    <div class="py">cài</div>
+    <div class="word">青菜</div>
+    <div class="count">总笔画：11画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w12"></div></div>
+<div class="btns">
+  <button onclick="speak('菜')">🔊 读音</button>
+  <button onclick="anim(12)">▶ 笔顺</button>
+  <button onclick="quiz(12)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">14</span>
+<div class="row">
+  <div class="han">果</div>
+  <div>
+    <div class="py">guǒ</div>
+    <div class="word">水果</div>
+    <div class="count">总笔画：8画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w13"></div></div>
+<div class="btns">
+  <button onclick="speak('果')">🔊 读音</button>
+  <button onclick="anim(13)">▶ 笔顺</button>
+  <button onclick="quiz(13)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">15</span>
+<div class="row">
+  <div class="han">奶</div>
+  <div>
+    <div class="py">nǎi</div>
+    <div class="word">牛奶</div>
+    <div class="count">总笔画：5画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w14"></div></div>
+<div class="btns">
+  <button onclick="speak('奶')">🔊 读音</button>
+  <button onclick="anim(14)">▶ 笔顺</button>
+  <button onclick="quiz(14)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">16</span>
+<div class="row">
+  <div class="han">白</div>
+  <div>
+    <div class="py">bái</div>
+    <div class="word">白色</div>
+    <div class="count">总笔画：5画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w15"></div></div>
+<div class="btns">
+  <button onclick="speak('白')">🔊 读音</button>
+  <button onclick="anim(15)">▶ 笔顺</button>
+  <button onclick="quiz(15)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">17</span>
+<div class="row">
+  <div class="han">黑</div>
+  <div>
+    <div class="py">hēi</div>
+    <div class="word">黑色</div>
+    <div class="count">总笔画：12画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w16"></div></div>
+<div class="btns">
+  <button onclick="speak('黑')">🔊 读音</button>
+  <button onclick="anim(16)">▶ 笔顺</button>
+  <button onclick="quiz(16)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">18</span>
+<div class="row">
+  <div class="han">红</div>
+  <div>
+    <div class="py">hóng</div>
+    <div class="word">红花</div>
+    <div class="count">总笔画：6画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w17"></div></div>
+<div class="btns">
+  <button onclick="speak('红')">🔊 读音</button>
+  <button onclick="anim(17)">▶ 笔顺</button>
+  <button onclick="quiz(17)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">19</span>
+<div class="row">
+  <div class="han">绿</div>
+  <div>
+    <div class="py">lǜ</div>
+    <div class="word">绿色</div>
+    <div class="count">总笔画：11画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w18"></div></div>
+<div class="btns">
+  <button onclick="speak('绿')">🔊 读音</button>
+  <button onclick="anim(18)">▶ 笔顺</button>
+  <button onclick="quiz(18)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">20</span>
+<div class="row">
+  <div class="han">蓝</div>
+  <div>
+    <div class="py">lán</div>
+    <div class="word">蓝天</div>
+    <div class="count">总笔画：13画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w19"></div></div>
+<div class="btns">
+  <button onclick="speak('蓝')">🔊 读音</button>
+  <button onclick="anim(19)">▶ 笔顺</button>
+  <button onclick="quiz(19)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">21</span>
+<div class="row">
+  <div class="han">早</div>
+  <div>
+    <div class="py">zǎo</div>
+    <div class="word">早上</div>
+    <div class="count">总笔画：6画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w20"></div></div>
+<div class="btns">
+  <button onclick="speak('早')">🔊 读音</button>
+  <button onclick="anim(20)">▶ 笔顺</button>
+  <button onclick="quiz(20)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">22</span>
+<div class="row">
+  <div class="han">晚</div>
+  <div>
+    <div class="py">wǎn</div>
+    <div class="word">晚上</div>
+    <div class="count">总笔画：11画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w21"></div></div>
+<div class="btns">
+  <button onclick="speak('晚')">🔊 读音</button>
+  <button onclick="anim(21)">▶ 笔顺</button>
+  <button onclick="quiz(21)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">23</span>
+<div class="row">
+  <div class="han">今</div>
+  <div>
+    <div class="py">jīn</div>
+    <div class="word">今天</div>
+    <div class="count">总笔画：4画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w22"></div></div>
+<div class="btns">
+  <button onclick="speak('今')">🔊 读音</button>
+  <button onclick="anim(22)">▶ 笔顺</button>
+  <button onclick="quiz(22)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">24</span>
+<div class="row">
+  <div class="han">明</div>
+  <div>
+    <div class="py">míng</div>
+    <div class="word">明天</div>
+    <div class="count">总笔画：8画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w23"></div></div>
+<div class="btns">
+  <button onclick="speak('明')">🔊 读音</button>
+  <button onclick="anim(23)">▶ 笔顺</button>
+  <button onclick="quiz(23)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">25</span>
+<div class="row">
+  <div class="han">前</div>
+  <div>
+    <div class="py">qián</div>
+    <div class="word">前面</div>
+    <div class="count">总笔画：9画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w24"></div></div>
+<div class="btns">
+  <button onclick="speak('前')">🔊 读音</button>
+  <button onclick="anim(24)">▶ 笔顺</button>
+  <button onclick="quiz(24)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">26</span>
+<div class="row">
+  <div class="han">后</div>
+  <div>
+    <div class="py">hòu</div>
+    <div class="word">后面</div>
+    <div class="count">总笔画：6画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w25"></div></div>
+<div class="btns">
+  <button onclick="speak('后')">🔊 读音</button>
+  <button onclick="anim(25)">▶ 笔顺</button>
+  <button onclick="quiz(25)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">27</span>
+<div class="row">
+  <div class="han">多</div>
+  <div>
+    <div class="py">duō</div>
+    <div class="word">很多</div>
+    <div class="count">总笔画：6画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w26"></div></div>
+<div class="btns">
+  <button onclick="speak('多')">🔊 读音</button>
+  <button onclick="anim(26)">▶ 笔顺</button>
+  <button onclick="quiz(26)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">28</span>
+<div class="row">
+  <div class="han">少</div>
+  <div>
+    <div class="py">shǎo</div>
+    <div class="word">很少</div>
+    <div class="count">总笔画：4画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w27"></div></div>
+<div class="btns">
+  <button onclick="speak('少')">🔊 读音</button>
+  <button onclick="anim(27)">▶ 笔顺</button>
+  <button onclick="quiz(27)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">29</span>
+<div class="row">
+  <div class="han">长</div>
+  <div>
+    <div class="py">cháng</div>
+    <div class="word">长大</div>
+    <div class="count">总笔画：4画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w28"></div></div>
+<div class="btns">
+  <button onclick="speak('长')">🔊 读音</button>
+  <button onclick="anim(28)">▶ 笔顺</button>
+  <button onclick="quiz(28)">✍ 跟写</button>
+</div>
+</article><article class="card">
+<span class="num">30</span>
+<div class="row">
+  <div class="han">高</div>
+  <div>
+    <div class="py">gāo</div>
+    <div class="word">高山</div>
+    <div class="count">总笔画：10画</div>
+  </div>
+</div>
+<div class="gridbox"><div id="w29"></div></div>
+<div class="btns">
+  <button onclick="speak('高')">🔊 读音</button>
+  <button onclick="anim(29)">▶ 笔顺</button>
+  <button onclick="quiz(29)">✍ 跟写</button>
+</div>
+</article></main>
+
+<footer>学习顺序：听读音 → 看笔顺 → 跟写 → 认读词语</footer>
+
+<script>
+const D=[{c:'书',n:4},{c:'本',n:5},{c:'笔',n:10},{c:'纸',n:7},{c:'包',n:5},{c:'桌',n:10},{c:'椅',n:12},{c:'衣',n:6},{c:'鞋',n:15},{c:'帽',n:12},{c:'米',n:6},{c:'饭',n:7},{c:'菜',n:11},{c:'果',n:8},{c:'奶',n:5},{c:'白',n:5},{c:'黑',n:12},{c:'红',n:6},{c:'绿',n:11},{c:'蓝',n:13},{c:'早',n:6},{c:'晚',n:11},{c:'今',n:4},{c:'明',n:8},{c:'前',n:9},{c:'后',n:6},{c:'多',n:6},{c:'少',n:4},{c:'长',n:4},{c:'高',n:10}],W=[];let session=0;
+D.forEach((x,i)=>W.push(HanziWriter.create('w'+i,x.c,{
+  width:200,height:200,padding:13,
+  showOutline:true,showCharacter:true,
+  strokeAnimationSpeed:1,delayBetweenStrokes:250,
+  strokeColor:'#263241',outlineColor:'#d7dce3',radicalColor:'#e65d49'
+})));
+
+let V=[];
+function lv(){if('speechSynthesis'in window)V=speechSynthesis.getVoices()||[]}
+lv();
+if('speechSynthesis'in window)speechSynthesis.onvoiceschanged=lv;
+
+function speak(t){
+  if(!('speechSynthesis'in window)){
+    alert('请使用 Chrome 或 Edge 浏览器');
+    return;
+  }
+  speechSynthesis.cancel();
+  speechSynthesis.resume();
+  let u=new SpeechSynthesisUtterance(t);
+  u.lang='zh-CN';
+  u.rate=.72;
+  u.pitch=1;
+  u.volume=1;
+  lv();
+  let v=V.find(x=>/^zh-CN$/i.test(x.lang))
+      ||V.find(x=>/^zh/i.test(x.lang))
+      ||V.find(x=>/Chinese|Mandarin|中文|普通话/i.test(x.name));
+  if(v)u.voice=v;
+  u.onerror=()=>alert('设备未启用中文语音，请安装中文普通话文字转语音');
+  speechSynthesis.speak(u);
+}
+
+function anim(i){
+  W[i].cancelQuiz();
+  W[i].animateCharacter();
+}
+
+function quiz(i){
+  W[i].quiz({
+    showHintAfterMisses:1,
+    highlightOnComplete:true,
+    onComplete:()=>speak(D[i].c)
+  });
+}
+
+const wait=m=>new Promise(r=>setTimeout(r,m));
+
+async function playAll(){
+  let s=++session,c=[...document.querySelectorAll('.card')];
+  for(let i=0;i<D.length;i++){
+    if(s!==session)return;
+    c.forEach(x=>x.classList.remove('active'));
+    c[i].classList.add('active');
+    c[i].scrollIntoView({behavior:'smooth',block:'center'});
+    speak(D[i].c);
+    W[i].animateCharacter();
+    await wait(1800+D[i].n*240);
+  }
+}
+
+function stopAll(){
+  session++;
+  if('speechSynthesis'in window)speechSynthesis.cancel();
+  document.querySelectorAll('.card').forEach(x=>x.classList.remove('active'));
+  W.forEach(x=>x.cancelQuiz());
+}
+</script>
+</body>
+</html>
