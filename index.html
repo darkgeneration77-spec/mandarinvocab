@@ -2,181 +2,47 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>儿童趣味识字｜第一阶段 Level 1–7</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>儿童趣味识字｜Level 1–7</title>
 <style>
-:root{
-  --ink:#243040;
-  --muted:#667085;
-  --primary:#ff765f;
-  --blue:#4c8cf5;
-  --paper:#ffffff;
-  --line:#e4e8ee;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",Arial,sans-serif;
-  color:var(--ink);
-  background:linear-gradient(145deg,#fff7ec 0%,#eef8ff 52%,#f7f2ff 100%);
-}
-.hero{
-  text-align:center;
-  padding:56px 18px 30px;
-}
-.hero .badge{
-  display:inline-block;
-  padding:8px 14px;
-  border-radius:999px;
-  background:#fff2cf;
-  border:1px solid #efd57b;
-  font-weight:800;
-  margin-bottom:14px;
-}
-.hero h1{
-  margin:0;
-  font-size:clamp(34px,7vw,62px);
-  line-height:1.15;
-}
-.hero p{
-  max-width:760px;
-  margin:14px auto 0;
-  color:var(--muted);
-  line-height:1.75;
-  font-size:16px;
-}
-.summary{
-  width:min(1000px,92%);
-  margin:0 auto 24px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-.summary div{
-  background:rgba(255,255,255,.86);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:16px;
-  text-align:center;
-  box-shadow:0 8px 24px rgba(34,51,75,.06);
-}
-.summary strong{
-  display:block;
-  font-size:26px;
-  color:var(--primary);
-}
-.summary span{
-  display:block;
-  margin-top:5px;
-  color:var(--muted);
-  font-weight:700;
-}
-.levels{
-  width:min(1100px,92%);
-  margin:0 auto 52px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-}
-.card{
-  display:flex;
-  flex-direction:column;
-  min-height:210px;
-  padding:22px;
-  border-radius:24px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  box-shadow:0 12px 34px rgba(34,51,75,.09);
-  text-decoration:none;
-  color:inherit;
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 16px 38px rgba(34,51,75,.14);
-}
-.number{
-  width:54px;
-  height:54px;
-  border-radius:17px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,#ff8a73,#ff654d);
-  color:#fff;
-  font-size:24px;
-  font-weight:900;
-}
-.card h2{
-  margin:16px 0 7px;
-  font-size:25px;
-}
-.card p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.65;
-  flex:1;
-}
-.enter{
-  margin-top:18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:11px 13px;
-  border-radius:13px;
-  background:#edf5ff;
-  color:#2f6fd2;
-  font-weight:900;
-}
-footer{
-  text-align:center;
-  color:#7b8491;
-  padding:0 16px 32px;
-}
-@media(max-width:650px){
-  .hero{padding-top:38px}
-  .summary{grid-template-columns:1fr}
-  .levels{width:94%;grid-template-columns:1fr}
-}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#fff8ef,#eef8ff);color:#263241}.home{min-height:100vh;padding:30px 16px;text-align:center}.home h1{font-size:clamp(32px,7vw,58px);margin:0 0 10px}.home p{color:#66717e}.levels{width:min(900px,96%);margin:28px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.level{border:0;border-radius:18px;padding:22px 12px;background:#fff;box-shadow:0 8px 24px #33445518;font-size:22px;font-weight:900;cursor:pointer}.level small{display:block;margin-top:8px;font-size:14px;color:#68717d}.stage{display:none;min-height:100vh;background:#fff}.bar{position:sticky;top:0;z-index:9999;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#ffffffee;border-bottom:1px solid #dfe4ea}.bar button,.bar select{border:0;border-radius:11px;padding:10px 14px;font-weight:800}.bar button{cursor:pointer}.back{background:#ff765f;color:#fff}.sound{background:#ffe69a}.bar select{background:#edf3ff}.frame{width:100%;height:calc(100vh - 62px);border:0;display:block}
 </style>
 </head>
 <body>
-<section class="hero">
-  <div class="badge">儿童趣味识字 · 第一阶段</div>
-  <h1>选择学习 Level</h1>
-  <p>请选择 Level 1–7 进入学习。每个 Level 保留原有HTML内容，包括拼音、基础词语、总笔画、动态笔顺、读音和跟写练习。</p>
+<section id="home" class="home">
+<h1>儿童趣味识字</h1>
+<p>第一阶段 · Level 1–7 · 共210个生字</p>
+<div class="levels">
+<button class="level" onclick="openLevel(1)">Level 1<small>基础生字</small></button>
+<button class="level" onclick="openLevel(2)">Level 2<small>家庭与动作</small></button>
+<button class="level" onclick="openLevel(3)">Level 3<small>用品与颜色</small></button>
+<button class="level" onclick="openLevel(4)">Level 4<small>自然与环境</small></button>
+<button class="level" onclick="openLevel(5)">Level 5<small>身体与生活</small></button>
+<button class="level" onclick="openLevel(6)">Level 6<small>动物与食物</small></button>
+<button class="level" onclick="openLevel(7)">Level 7<small>方向与状态</small></button>
+</div>
 </section>
-
-<section class="summary">
-  <div><strong>7</strong><span>学习级别</span></div>
-  <div><strong>210</strong><span>基础生字</span></div>
-  <div><strong>30</strong><span>每级生字</span></div>
+<section id="stage" class="stage">
+<div class="bar">
+<button class="back" onclick="goHome()">← 回到主页</button>
+<select id="levelSelect" onchange="openLevel(Number(this.value))">
+<option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option><option value="5">Level 5</option><option value="6">Level 6</option><option value="7">Level 7</option>
+</select>
+<button class="sound" onclick="mobileSpeak('一')">🔊 测试声音</button>
+</div>
+<iframe id="lessonFrame" class="frame" title="识字课程"></iframe>
 </section>
-
-<main class="levels">
-  <a class="card" href="儿童趣味识字_Level1_第一阶段30字.html">
-    <div class="number">1</div><h2>Level 1</h2><p>数字、人物、身体、方位、自然与基础动物。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-  <a class="card" href="儿童趣味识字_Level2_第一阶段30字.html">
-    <div class="number">2</div><h2>Level 2</h2><p>家庭人物、情感状态、生活动作与常见用字。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-  <a class="card" href="儿童趣味识字_Level3_第一阶段30字.html">
-    <div class="number">3</div><h2>Level 3</h2><p>学习用品、衣物、食物、颜色、时间与形容词。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-  <a class="card" href="儿童趣味识字_Level4_第一阶段30字.html">
-    <div class="number">4</div><h2>Level 4</h2><p>天气、自然、交通、学校、房屋与生活环境。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-  <a class="card" href="儿童趣味识字_Level5_第一阶段30字.html">
-    <div class="number">5</div><h2>Level 5</h2><p>身体、健康、感觉、学习及常见动作。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-  <a class="card" href="儿童趣味识字_Level6_第一阶段30字.html">
-    <div class="number">6</div><h2>Level 6</h2><p>动物、昆虫、食物、味道、温度与状态。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-  <a class="card" href="儿童趣味识字_Level7_第一阶段30字.html">
-    <div class="number">7</div><h2>Level 7</h2><p>季节、时间、方向、形状、位置与相反概念。</p><div class="enter"><span>开始学习</span><span>→</span></div>
-  </a>
-</main>
-
-<footer>儿童趣味识字 · 第一阶段 Level 1–7</footer>
+<audio id="ttsAudio" preload="none"></audio>
+<script>
+const files={
+1:'儿童趣味识字_Level1_第一阶段30字.html',2:'儿童趣味识字_Level2_第一阶段30字.html',3:'儿童趣味识字_Level3_第一阶段30字.html',4:'儿童趣味识字_Level4_第一阶段30字.html',5:'儿童趣味识字_Level5_第一阶段30字.html',6:'儿童趣味识字_Level6_第一阶段30字.html',7:'儿童趣味识字_Level7_第一阶段30字.html'};
+let currentLevel=1;
+function openLevel(n){currentLevel=n;document.getElementById('home').style.display='none';document.getElementById('stage').style.display='block';document.getElementById('levelSelect').value=String(n);const f=document.getElementById('lessonFrame');f.src=files[n];window.scrollTo(0,0)}
+function goHome(){const f=document.getElementById('lessonFrame');f.src='about:blank';document.getElementById('stage').style.display='none';document.getElementById('home').style.display='block';window.scrollTo(0,0)}
+function browserSpeak(text){if(!('speechSynthesis' in window))return false;try{speechSynthesis.cancel();speechSynthesis.resume();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=.72;u.pitch=1;u.volume=1;const vs=speechSynthesis.getVoices();const v=vs.find(x=>/^zh-CN$/i.test(x.lang))||vs.find(x=>/^zh/i.test(x.lang))||vs.find(x=>/Chinese|Mandarin|中文|普通话/i.test(x.name));if(v)u.voice=v;speechSynthesis.speak(u);return true}catch(e){return false}}
+function mobileSpeak(text){const a=document.getElementById('ttsAudio');a.pause();a.currentTime=0;a.volume=1;a.muted=false;a.src='https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q='+encodeURIComponent(text);const p=a.play();if(p&&p.catch){p.catch(()=>{if(!browserSpeak(text))alert('请用Chrome打开，并在手机设置中启用中文普通话文字转语音。')})}}
+const frame=document.getElementById('lessonFrame');frame.addEventListener('load',()=>{try{const w=frame.contentWindow;w.speak=mobileSpeak;w.speakText=mobileSpeak;const doc=frame.contentDocument;doc.querySelectorAll('button').forEach(btn=>{const oc=btn.getAttribute('onclick')||'';if(oc.includes("speak('")||oc.includes('speakText(')){btn.addEventListener('touchend',e=>{e.preventDefault();const m=oc.match(/(?:speak|speakText)\('([^']+)'\)/);if(m)mobileSpeak(m[1])},{passive:false})}})}catch(e){console.warn(e)}});
+if('speechSynthesis' in window){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices()}
+</script>
 </body>
 </html>
