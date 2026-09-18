@@ -5,14 +5,35 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>儿童趣味识字｜Level 1–14</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#fff8ef,#eef8ff);color:#263241}.home{min-height:100vh;padding:30px 16px;text-align:center}.home h1{font-size:clamp(32px,7vw,58px);margin:0 0 10px}.home p{color:#66717e}.levels{width:min(900px,96%);margin:28px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.level{border:0;border-radius:18px;padding:22px 12px;background:#fff;box-shadow:0 8px 24px #33445518;font-size:22px;font-weight:900;cursor:pointer}.level small{display:block;margin-top:8px;font-size:14px;color:#68717d}.stage{display:none;min-height:100vh;background:#fff}.bar{position:sticky;top:0;z-index:9999;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#ffffffee;border-bottom:1px solid #dfe4ea}.bar button,.bar select{border:0;border-radius:11px;padding:10px 14px;font-weight:800}.bar button{cursor:pointer}.back{background:#ff765f;color:#fff}.sound{background:#ffe69a}.bar select{background:#edf3ff}.frame{width:100%;height:calc(100vh - 62px);border:0;display:block}.progressBox{width:min(900px,96%);margin:0 auto 22px;background:#fff;border-radius:18px;padding:14px;box-shadow:0 8px 24px #33445518}.progressTop{display:flex;justify-content:space-between;font-weight:800;margin-bottom:8px}.track{height:12px;background:#e8edf2;border-radius:99px;overflow:hidden}.fill{height:100%;background:#62b77a;width:0}.levelProgress{display:block;margin-top:7px;font-size:13px;color:#6b7580}.quizFloat{position:fixed;right:18px;bottom:18px;z-index:99999;border:0;border-radius:18px;padding:14px 18px;background:#6941c6;color:#fff;font-weight:900;box-shadow:0 8px 24px #0003;cursor:pointer}.quizOverlay{position:fixed;inset:0;z-index:100000;background:#0008;display:grid;place-items:center;padding:18px}.quizPanel{width:min(560px,96vw);background:#fff;border-radius:24px;padding:24px;text-align:center}.quizChar{font-size:76px;font-weight:900;margin:10px}.quizChoices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quizChoices button{font-size:30px;padding:18px;border:1px solid #dfe4ea;background:#f7f9fc;border-radius:16px;font-weight:900}.quizMeta{color:#68717d;font-weight:700}.wrongBox{margin-top:12px;font-weight:800;color:#b44444}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"Microsoft YaHei",Arial,sans-serif;color:#40514b}body{background:#dff4ff}
+.home{min-height:100vh;padding:18px 14px 95px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(#dff6ff 0 30%,#eafbd7 30% 100%)}
+.home:before{content:"";position:absolute;left:-8%;right:-8%;top:24%;height:190px;background:#a9df7a;border-radius:50% 50% 0 0/55% 55% 0 0;opacity:.8}
+.home>*{position:relative;z-index:1}
+.top{width:min(980px,96%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{text-align:left}.brand h1{font-size:clamp(28px,6vw,48px);margin:0;color:#467a42;text-shadow:0 3px #fff}.brand p{margin:5px 0;color:#65866b;font-weight:800}
+.badge{background:#fff8cf;border:3px solid #f3d66c;border-radius:20px;padding:10px 14px;font-weight:900;box-shadow:0 5px 0 #dfc258}
+.progressBox{width:min(900px,96%);margin:18px auto 12px;background:#ffffffde;border:3px solid #fff;border-radius:24px;padding:14px 18px;box-shadow:0 7px 0 #b7dca4,0 12px 25px #56775a20}
+.progressTop{display:flex;justify-content:space-between;font-weight:900;margin-bottom:8px}.track{height:15px;background:#e6efd9;border-radius:99px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#ffd65a,#7dd56f);width:0;border-radius:99px}.wrongBox{margin-top:9px;font-weight:800;color:#9c6756}
+.world{width:min(930px,96%);margin:18px auto 0;padding:24px 12px 45px;border-radius:38px;background:linear-gradient(180deg,#f7f0cf,#dff1bb);box-shadow:inset 0 0 0 4px #ffffffaa}
+.worldTitle{font-size:22px;font-weight:1000;color:#6a7c45;margin-bottom:18px}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:20px;align-items:center}
+.level{position:relative;border:0;border-radius:32px;padding:20px 9px 15px;background:linear-gradient(#75dff1,#50bdd6);box-shadow:0 8px 0 #319ab4,0 13px 18px #496a6526;font-size:21px;font-weight:1000;color:white;cursor:pointer;transition:.15s;min-height:108px;text-shadow:0 2px #33869a}
+.level:nth-child(3n+2){background:linear-gradient(#ffc873,#f49d52);box-shadow:0 8px 0 #d87e37,0 13px 18px #496a6526;text-shadow:0 2px #c87937}
+.level:nth-child(3n){background:linear-gradient(#a9df75,#72bd58);box-shadow:0 8px 0 #4c9d43,0 13px 18px #496a6526;text-shadow:0 2px #4d9944}
+.level:hover{transform:translateY(-3px)}.level:active{transform:translateY(5px);box-shadow:0 3px 0 #468c73}
+.level:before{content:"★";display:block;margin:auto auto 6px;width:34px;height:34px;line-height:34px;border-radius:50%;background:#fff7be;color:#f4b63e;text-shadow:none;font-size:22px}
+.level small{display:block;margin-top:5px;font-size:13px;color:#fff;text-shadow:none}.levelProgress{display:block;margin-top:6px;font-size:12px;color:#eaffff;text-shadow:none}
+.bottomDock{position:fixed;z-index:8;bottom:12px;left:50%;transform:translateX(-50%);width:min(520px,92%);display:flex;justify-content:space-around;background:#ffffffed;border:3px solid #fff;border-radius:28px;padding:8px;box-shadow:0 7px 18px #496a6540}
+.dockItem{border:0;background:transparent;font-weight:900;color:#66806a;padding:7px 13px;border-radius:17px}.dockItem.active{background:#e4f5cc;color:#4d8b4d}
+.stage{display:none;min-height:100vh;background:#fff}.bar{position:sticky;top:0;z-index:9999;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#effbe8;border-bottom:3px solid #cce6b7}.bar button,.bar select{border:0;border-radius:15px;padding:11px 15px;font-weight:900}.bar button{cursor:pointer}.back{background:#ff8b68;color:#fff}.sound{background:#ffe27b}.bar select{background:#fff}.frame{width:100%;height:calc(100vh - 64px);border:0;display:block}
+@media(max-width:600px){.top{align-items:flex-start}.badge{font-size:12px}.levels{grid-template-columns:repeat(2,1fr);gap:16px}.world{padding:18px 9px 38px}.level{min-height:104px}}
 </style>
 </head>
 <body>
 <section id="home" class="home">
-<h1>儿童趣味识字</h1>
-<p>Level 1–14 · 两个阶段 · 共420个不重复生字</p>
-<div class="progressBox"><div class="progressTop"><span>学习进度</span><span id="totalProgress">0 / 420</span></div><div class="track"><div class="fill" id="totalFill"></div></div><div id="wrongSummary" class="wrongBox"></div></div><div class="levels">
+<div class="top"><div class="brand"><h1>汉字探险岛</h1><p>认识汉字，一关一关向前走</p></div><div class="badge">🏆 <span id="totalProgress">0 / 420</span></div></div>
+<div class="progressBox"><div class="progressTop"><span>今日识字进度</span><span>⭐ 继续加油</span></div><div class="track"><div class="fill" id="totalFill"></div></div><div id="wrongSummary" class="wrongBox"></div></div>
+<div class="world"><div class="worldTitle">🌳 汉字成长路线 · Level 1–14</div><div class="levels">
 <button class="level" onclick="openLevel(1)">Level 1<small>基础生字</small><span class="levelProgress" id="lp1">已掌握 0/30</span></button>
 <button class="level" onclick="openLevel(2)">Level 2<small>家庭与动作</small><span class="levelProgress" id="lp2">已掌握 0/30</span></button>
 <button class="level" onclick="openLevel(3)">Level 3<small>用品与颜色</small><span class="levelProgress" id="lp3">已掌握 0/30</span></button>
@@ -27,7 +48,8 @@
 <button class="level" onclick="openLevel(12)">Level 12<small>地点与交通</small><span class="levelProgress" id="lp12">已掌握 0/30</span></button>
 <button class="level" onclick="openLevel(13)">Level 13<small>感受、情绪与状态</small><span class="levelProgress" id="lp13">已掌握 0/30</span></button>
 <button class="level" onclick="openLevel(14)">Level 14<small>高频阅读基础字</small><span class="levelProgress" id="lp14">已掌握 0/30</span></button>
-</div>
+</div></div>
+<div class="bottomDock"><button class="dockItem active">🏠 学习</button><button class="dockItem" onclick="alert('完成小测后，错字会自动加入重点复习。')">🧠 复习</button><button class="dockItem" onclick="alert('阅读模块将在下一阶段加入。')">📖 阅读</button></div>
 </section>
 <section id="stage" class="stage">
 <div class="bar">
