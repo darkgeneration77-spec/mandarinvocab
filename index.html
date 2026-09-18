@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>儿童趣味识字｜Level 1–7</title>
+<title>儿童趣味识字｜Level 1–14</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#fff8ef,#eef8ff);color:#263241}.home{min-height:100vh;padding:30px 16px;text-align:center}.home h1{font-size:clamp(32px,7vw,58px);margin:0 0 10px}.home p{color:#66717e}.levels{width:min(900px,96%);margin:28px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}.level{border:0;border-radius:18px;padding:22px 12px;background:#fff;box-shadow:0 8px 24px #33445518;font-size:22px;font-weight:900;cursor:pointer}.level small{display:block;margin-top:8px;font-size:14px;color:#68717d}.stage{display:none;min-height:100vh;background:#fff}.bar{position:sticky;top:0;z-index:9999;display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;background:#ffffffee;border-bottom:1px solid #dfe4ea}.bar button,.bar select{border:0;border-radius:11px;padding:10px 14px;font-weight:800}.bar button{cursor:pointer}.back{background:#ff765f;color:#fff}.sound{background:#ffe69a}.bar select{background:#edf3ff}.frame{width:100%;height:calc(100vh - 62px);border:0;display:block}
 </style>
@@ -11,7 +11,7 @@
 <body>
 <section id="home" class="home">
 <h1>儿童趣味识字</h1>
-<p>第一阶段 · Level 1–7 · 共210个生字</p>
+<p>Level 1–14 · 两个阶段 · 共420个不重复生字</p>
 <div class="levels">
 <button class="level" onclick="openLevel(1)">Level 1<small>基础生字</small></button>
 <button class="level" onclick="openLevel(2)">Level 2<small>家庭与动作</small></button>
@@ -20,13 +20,20 @@
 <button class="level" onclick="openLevel(5)">Level 5<small>身体与生活</small></button>
 <button class="level" onclick="openLevel(6)">Level 6<small>动物与食物</small></button>
 <button class="level" onclick="openLevel(7)">Level 7<small>方向与状态</small></button>
+<button class="level" onclick="openLevel(8)">Level 8<small>学校、人际与语言</small></button>
+<button class="level" onclick="openLevel(9)">Level 9<small>生活动作与购物</small></button>
+<button class="level" onclick="openLevel(10)">Level 10<small>饮食与厨房</small></button>
+<button class="level" onclick="openLevel(11)">Level 11<small>时间与顺序</small></button>
+<button class="level" onclick="openLevel(12)">Level 12<small>地点与交通</small></button>
+<button class="level" onclick="openLevel(13)">Level 13<small>感受、情绪与状态</small></button>
+<button class="level" onclick="openLevel(14)">Level 14<small>高频阅读基础字</small></button>
 </div>
 </section>
 <section id="stage" class="stage">
 <div class="bar">
 <button class="back" onclick="goHome()">← 回到主页</button>
 <select id="levelSelect" onchange="openLevel(Number(this.value))">
-<option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option><option value="5">Level 5</option><option value="6">Level 6</option><option value="7">Level 7</option>
+<option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option><option value="5">Level 5</option><option value="6">Level 6</option><option value="7">Level 7</option><option value="8">Level 8</option><option value="9">Level 9</option><option value="10">Level 10</option><option value="11">Level 11</option><option value="12">Level 12</option><option value="13">Level 13</option><option value="14">Level 14</option>
 </select>
 <button class="sound" onclick="mobileSpeak('一')">🔊 测试声音</button>
 </div>
@@ -35,7 +42,7 @@
 <audio id="ttsAudio" preload="none"></audio>
 <script>
 const files={
-1:'儿童趣味识字_Level1_第一阶段30字.html',2:'儿童趣味识字_Level2_第一阶段30字.html',3:'儿童趣味识字_Level3_第一阶段30字.html',4:'儿童趣味识字_Level4_第一阶段30字.html',5:'儿童趣味识字_Level5_第一阶段30字.html',6:'儿童趣味识字_Level6_第一阶段30字.html',7:'儿童趣味识字_Level7_第一阶段30字.html'};
+1:'儿童趣味识字_Level1_第一阶段30字.html',2:'儿童趣味识字_Level2_第一阶段30字.html',3:'儿童趣味识字_Level3_第一阶段30字.html',4:'儿童趣味识字_Level4_第一阶段30字.html',5:'儿童趣味识字_Level5_第一阶段30字.html',6:'儿童趣味识字_Level6_第一阶段30字.html',7:'儿童趣味识字_Level7_第一阶段30字.html',8:'儿童趣味识字_Level8_第二阶段30字.html',9:'儿童趣味识字_Level9_第二阶段30字.html',10:'儿童趣味识字_Level10_第二阶段30字.html',11:'儿童趣味识字_Level11_第二阶段30字.html',12:'儿童趣味识字_Level12_第二阶段30字.html',13:'儿童趣味识字_Level13_第二阶段30字.html',14:'儿童趣味识字_Level14_第二阶段30字.html'};
 let currentLevel=1;
 function openLevel(n){currentLevel=n;document.getElementById('home').style.display='none';document.getElementById('stage').style.display='block';document.getElementById('levelSelect').value=String(n);const f=document.getElementById('lessonFrame');f.src=files[n];window.scrollTo(0,0)}
 function goHome(){const f=document.getElementById('lessonFrame');f.src='about:blank';document.getElementById('stage').style.display='none';document.getElementById('home').style.display='block';window.scrollTo(0,0)}
